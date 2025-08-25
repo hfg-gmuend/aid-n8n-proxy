@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  aid-n8n-proxy:
+    build: .
+    image: aid-n8n-proxy:latest
+    container_name: aid-n8n-proxy
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - FAL_KEY=${FAL_KEY}
+    # Mount volume directory if you want to persist/modify runtime assets
+    volumes:
+      - ./volume:/app/volume
+    restart: unless-stopped
